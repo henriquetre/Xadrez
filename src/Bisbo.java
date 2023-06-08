@@ -10,33 +10,34 @@ public class Bisbo extends Peca{
        ArrayList<Posicao>possiveisMovimentos = new ArrayList<>();
 
         for (int i = (posicaoDoTabuleiro % 8==0 ? 64 : posicaoDoTabuleiro + 7 ); i < tabuleiro.getListaDePosicaoes().size() ; i+=7) {
-            possiveisMovimentos.add(tabuleiro.getListaDePosicaoes().get(i));
-            if(i % 8 ==0){
+
+            if(i % 8 ==0 || verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos)){
                 break;
             }
 
 
         }
-        for (int i = (posicaoDoTabuleiro % 8==0 ? -1: posicaoDoTabuleiro - 7 ); i >=0 ; i-=7) {
-           possiveisMovimentos.add(tabuleiro.getListaDePosicaoes().get(i));
 
-            if(i % 8 ==0){
+        for (int i = ((posicaoDoTabuleiro+1) % 8==0 ? -1: posicaoDoTabuleiro - 7 ); i >=0 ; i-=7) {
+
+
+            if(i % 8 ==0 || verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos)){
                 break;
             }
 
-            verificaPeca(posicaoAtual,possiveisMovimentos);
 
         }
-        for (int i = (posicaoDoTabuleiro % 8==0 ? 64 : posicaoDoTabuleiro + 9 ); i < tabuleiro.getListaDePosicaoes().size() ; i+=9) {
-            possiveisMovimentos.add(tabuleiro.getListaDePosicaoes().get(i));
-            if((i+1) % 8 ==0){
+
+        for (int i = ((posicaoDoTabuleiro+1) % 8==0 ? 64 : posicaoDoTabuleiro + 9 ); i < tabuleiro.getListaDePosicaoes().size() ; i+=9) {
+
+            if((i+1) % 8 ==0 || verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos)){
                 break;
             }
 
         }
         for (int i = (posicaoDoTabuleiro % 8==0 ? -1 : posicaoDoTabuleiro -9 ); i >= 0 ; i-=9) {
-            possiveisMovimentos.add(tabuleiro.getListaDePosicaoes().get(i));
-            if(i % 8 ==0){
+
+            if(i % 8 ==0 || verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos)){
                 break;
             }
         }
@@ -56,7 +57,7 @@ public class Bisbo extends Peca{
 //
 //
 //        }
-        return null;
+        return possiveisMovimentos;
     }
 
 
