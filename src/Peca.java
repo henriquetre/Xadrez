@@ -4,6 +4,10 @@ public  abstract class Peca {
     private String cor="";
     private Posicao posicao;
 
+    public Peca(String cor) {
+        this.cor=cor;
+    }
+
 
     public Posicao getPosicao() {
         return posicao;
@@ -44,6 +48,11 @@ public  abstract class Peca {
                 possiveisMovimentos.add(posicao);
             }
             return true;
+        }
+
+        public boolean verificaExtremidade(int posicaoNoTabuleiro){
+
+            return posicaoNoTabuleiro % 8 ==0;
         }
 
 }

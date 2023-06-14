@@ -2,61 +2,49 @@ import java.util.ArrayList;
 
 public class Bisbo extends Peca{
 
-
+    public Bisbo(String cor){
+        super(cor);
+    }
     @Override
     public ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro) {
         Posicao posicaoAtual= this.getPosicao();
         int posicaoDoTabuleiro= tabuleiro.getListaDePosicaoes().indexOf(posicaoAtual);
        ArrayList<Posicao>possiveisMovimentos = new ArrayList<>();
 
-        for (int i = (posicaoDoTabuleiro % 8==0 ? 64 : posicaoDoTabuleiro + 7 ); i < tabuleiro.getListaDePosicaoes().size() ; i+=7) {
+        for (int i = (verificaExtremidade(posicaoDoTabuleiro) ? 64 : posicaoDoTabuleiro + 7 ); i < tabuleiro.getListaDePosicaoes().size() ; i+=7) {
 
-            if(i % 8 ==0 || verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos)){
+            if(verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos) || verificaExtremidade(i)  ){
                 break;
             }
 
 
         }
 
-        for (int i = ((posicaoDoTabuleiro+1) % 8==0 ? -1: posicaoDoTabuleiro - 7 ); i >=0 ; i-=7) {
+        for (int i = (verificaExtremidade(posicaoDoTabuleiro+1) ? -1: posicaoDoTabuleiro - 7 ); i >=0 ; i-=7) {
 
 
-            if(i % 8 ==0 || verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos)){
+            if(verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos) || verificaExtremidade(i+1)  ){
                 break;
             }
 
 
         }
 
-        for (int i = ((posicaoDoTabuleiro+1) % 8==0 ? 64 : posicaoDoTabuleiro + 9 ); i < tabuleiro.getListaDePosicaoes().size() ; i+=9) {
+        for (int i = (verificaExtremidade(posicaoDoTabuleiro+1) ? 64 : posicaoDoTabuleiro + 9 ); i < tabuleiro.getListaDePosicaoes().size() ; i+=9) {
 
-            if((i+1) % 8 ==0 || verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos)){
+            if(verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos) || verificaExtremidade(posicaoDoTabuleiro+1)  ){
                 break;
             }
 
         }
-        for (int i = (posicaoDoTabuleiro % 8==0 ? -1 : posicaoDoTabuleiro -9 ); i >= 0 ; i-=9) {
+        for (int i = (verificaExtremidade(posicaoDoTabuleiro) ? -1 : posicaoDoTabuleiro -9 ); i >= 0 ; i-=9) {
 
-            if(i % 8 ==0 || verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos)){
+            if(verificaPeca(tabuleiro.getListaDePosicaoes().get(i),possiveisMovimentos) || verificaExtremidade(i)  ){
                 break;
             }
         }
 
-//        for (Posicao posicao1:tabuleiro.getListaDePosicaoes()) {
-//            int cont = tabuleiro.getListaDePosicaoes().indexOf(posicao1);
 //
-//
-//           if((cont - posicaoDoTabuleiro)% 7 ==0){
-//               possiveisMovimentos.add(posicao1);
-//
-//           }
-//           else if((cont - posicaoDoTabuleiro)% 9 ==0){
-//                possiveisMovimentos.add(posicao1);
-//
-//            }
-//
-//
-//        }
         return possiveisMovimentos;
     }
 

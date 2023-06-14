@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 
 public class Cavalo extends Peca {
+
+    public Cavalo(String cor){
+        super(cor);
+    }
+
     @Override
     public ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro) {
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
@@ -24,34 +29,34 @@ public class Cavalo extends Peca {
 
 
                 //Coluna H
-                if ((posicaoTabuleiro + 1) % 8 == 0 && !(
+                if (verificaExtremidade(posicaoTabuleiro+1) && !(
                         indice == posicaoTabuleiro - 15 ||
                                 indice == posicaoTabuleiro - 6 ||
                                 indice == posicaoTabuleiro + 10 ||
                                 indice == posicaoTabuleiro + 17
                 )) {
-                    possiveisMovimentos.add(posicao);
+                    verificaPeca(posicao,possiveisMovimentos);
                 }
                 //Coluna A
-                else if ((posicaoTabuleiro) % 8 == 0 && !(
+                else if (verificaExtremidade(posicaoTabuleiro) && !(
                         indice == posicaoTabuleiro - 17 ||
                                 indice == posicaoTabuleiro - 10 ||
                                 indice == posicaoTabuleiro + 6 ||
                                 indice == posicaoTabuleiro + 15
                 )
                 ) {
-                    possiveisMovimentos.add(posicao);
+                    verificaPeca(posicao,possiveisMovimentos);
                 }
                 //Coluna B
-                if ((posicaoTabuleiro - 1) % 8 == 0 && (
+                if (verificaExtremidade(posicaoTabuleiro-1) && (
                         indice == posicaoTabuleiro - 10 ||
                                 indice == posicaoTabuleiro + 6
                 )) {
-                    possiveisMovimentos.add(posicao);
+                    verificaPeca(posicao,possiveisMovimentos);
                 }
 
                 //Coluna G
-                if ((posicaoTabuleiro + 2) % 8 == 0 && !(
+                if (verificaExtremidade(posicaoTabuleiro+2) && !(
                         indice == posicaoTabuleiro - 15 ||
                                 indice == posicaoTabuleiro
                 )) {
