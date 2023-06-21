@@ -17,12 +17,16 @@ public class Peao extends Peca {
         ArrayList<Posicao> posicaoTabuleiro= tabuleiro.getListaDePosicaoes();
 
         if( this.getCor().equals("Preto")) {
+            System.out.println("entrou");
 
-            if (posicaoTabuleiro.get(posicaoNoTabuleiro+ 8).getPeca()== null) {
+
+
+            if (posicaoTabuleiro.get(posicaoNoTabuleiro + 8).getPeca()== null) {
+
                 possiveisMovimentos.add(posicaoTabuleiro.get(posicaoNoTabuleiro + 8));
             }
                 if (this.primeiroMovimento) {
-
+                    System.out.println("entrou2");
                     if(posicaoTabuleiro.get(posicaoNoTabuleiro+ 16).getPeca()== null) {
                         possiveisMovimentos.add(posicaoTabuleiro.get(posicaoNoTabuleiro + 16));
                     }
@@ -64,5 +68,12 @@ public class Peao extends Peca {
         }
 
         return possiveisMovimentos;
+    }
+
+    @Override
+    public String toString() {
+        return "Peao{" +
+                "primeiroMovimento=" + primeiroMovimento +
+                "} " + super.toString();
     }
 }

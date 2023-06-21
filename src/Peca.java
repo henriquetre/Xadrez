@@ -13,7 +13,7 @@ public  abstract class Peca {
         return posicao;
     }
 
-    public void mover(Tabuleiro tabuleiro, Posicao posicao){
+    public boolean mover(Tabuleiro tabuleiro, Posicao posicao){
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimentos(tabuleiro);
 
         for (Posicao posicao1: possiveisPosicoes) {
@@ -24,10 +24,10 @@ public  abstract class Peca {
                 // Removendo a peça da posição anterior
                 this.posicao = posicao;
                 // Trocando a posição atual da peça
-                break;
+                return true;
             }
         }
-
+        return false;
     }
 
     public abstract ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro);
@@ -55,5 +55,12 @@ public  abstract class Peca {
             return posicaoNoTabuleiro % 8 ==0;
         }
 
+    @Override
+    public String toString() {
+        return "Peca{" +
+                "Cor='" + cor + '\'' +
+                ", Posicao=" + posicao +
+                '}';
+    }
 }
 

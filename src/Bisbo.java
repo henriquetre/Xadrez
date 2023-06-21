@@ -48,6 +48,8 @@ public class Bisbo extends Peca{
         return possiveisMovimentos;
     }
 
-
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

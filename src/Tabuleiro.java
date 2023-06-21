@@ -46,7 +46,6 @@ public class Tabuleiro {
 
         }
 
-
     }
     public void removerPeca(Posicao posicao){
 
@@ -54,5 +53,12 @@ public class Tabuleiro {
 
     public ArrayList<Posicao> getListaDePosicaoes() {
         return listaDePosicoes;
+    }
+
+    @Override
+    public String toString() {
+        return "Tabuleiro{" +
+                "listaDePosicoes=" + listaDePosicoes +
+                '}';
     }
 }
